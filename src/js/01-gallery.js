@@ -2,6 +2,11 @@
 import { galleryItems } from './gallery-items';
 // Change code below this line
 
+// Descrito en la documentación
+import SimpleLightbox from 'simplelightbox';
+// Importación adicional de estilos
+import 'simplelightbox/dist/simple-lightbox.min.css';
+
 console.log(galleryItems);
 
 const gallery = document.querySelector('.gallery');
