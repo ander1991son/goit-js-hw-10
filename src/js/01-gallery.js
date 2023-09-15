@@ -2,9 +2,9 @@
 import { galleryItems } from './gallery-items';
 // Change code below this line
 
-// Descrito en la documentación
+// // Descrito en la documentación
 import SimpleLightbox from 'simplelightbox';
-// Importación adicional de estilos
+// // Importación adicional de estilos
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
 console.log(galleryItems);
@@ -19,7 +19,7 @@ const galleryMarkup = galleryItems
         <img
           class="gallery__image"
           src="${item.preview}"
-        data-source="${item.original}"           //revisar para que sirve
+        data-source="${item.original}"          
           alt="${item.description}"
         />
       </a>
@@ -30,3 +30,24 @@ const galleryMarkup = galleryItems
 
 // //gallery.innerHTML = galleryMarkup;
 gallery.insertAdjacentHTML('beforeend', galleryMarkup);
+
+document.addEventListener('DOMContentLoaded', function () {
+  const lightbox = new SimpleLightbox('.gallery a', {
+    captions: true,
+    captionsData: 'alt',
+    captionDelay: 250,
+    captionsPosition: 'bottom',
+  });
+});
+
+// function openModal(event) {
+//   event.preventDefault();
+
+//   if (event.target.nodeName === 'IMG') {
+//     const sourceUrl = event.target.dataset.source;
+//     const instance = basicLightbox.create(`<img src="${sourceUrl}" alt="">`);
+//     instance.show();
+//   }
+// }
+
+// gallery.addEventListener('click', openModal);
