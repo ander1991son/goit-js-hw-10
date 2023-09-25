@@ -13,25 +13,43 @@ const minutesValue = document.querySelector('[data-minutes]');
 const secondsValue = document.querySelector('[data-seconds]');
 let countdownInterval;
 
-flatpickr(
-  datetimePicker,
-  (options = {
-    enableTime: true,
-    time_24hr: true,
-    defaultDate: new Date(),
-    minuteIncrement: 1,
-    onClose(selectedDates) {
-      //console.log(selectedDates[0]);
-      const selectedDate = selectedDates[0];
-      if (selectedDate > new Date()) {
-        startButton.removeAttribute('disabled');
-      } else {
-        startButton.setAttribute('disabled', 'true');
-        window.alert('Please choose a date in the future');
-      }
-    },
-  })
-);
+// flatpickr(
+//   datetimePicker,
+//   (options = {
+//     enableTime: true,
+//     time_24hr: true,
+//     defaultDate: new Date(),
+//     minuteIncrement: 1,
+//     onClose(selectedDates) {
+//       console.log(selectedDates[0]);
+//       const selectedDate = selectedDates[0];
+//       if (selectedDate > new Date()) {
+//         startButton.removeAttribute('disabled');
+//       } else {
+//         startButton.setAttribute('disabled', 'true');
+//         window.alert('Please choose a date in the future');
+//       }
+//     },
+//   })
+// );
+
+flatpickr(datetimePicker, {
+  enableTime: true,
+  time_24hr: true,
+  defaultDate: new Date(),
+  minuteIncrement: 1,
+  onClose(selectedDates) {
+    //console.log(selectedDates[0]);
+    const selectedDate = selectedDates[0];
+    if (selectedDate > new Date()) {
+      startButton.removeAttribute('disabled');
+    } else {
+      startButton.setAttribute('disabled', 'true');
+      Notiflix.Notify.success('Please choose a date in the future');
+      //   window.alert('Please choose a date in the future');
+    }
+  },
+});
 
 function convertMs(ms) {
   // Number of milliseconds per unit of time
@@ -86,37 +104,3 @@ startButton.addEventListener('click', function () {
   countdownInterval = setInterval(calculateCountdown, 1000);
   startButton.setAttribute('disabled', 'true');
 });
-
-// //Configuración de flatpickr
-// flatpickr(datetimePicker, {
-//   enableTime: true,
-//   time_24hr: true,
-//   defaultDate: new Date(),
-//   minuteIncrement: 1,
-//   onClose: function (selectedDates) {
-//     const selectedDate = selectedDates[0];
-//     if (selectedDate > new Date()) {
-//       startButton.removeAttribute('disabled');
-//     } else {
-//       startButton.setAttribute('disabled', 'true');
-//       Notiflix.Notify.failure('Please choose a date in the future');
-//     }
-//   },
-// });
-
-// //Configuración de flatpickr
-// const options = {
-//   enableTime: true,
-//   time_24hr: true,
-//   defaultDate: new Date(),
-//   minuteIncrement: 1,
-//   onClose(selectedDates) {
-//     const selectedDate = selectedDates[0];
-//     if (selectedDate > new Date()) {
-//       startButton.removeAttribute('disabled');
-//     } else {
-//       startButton.setAttribute('disabled', 'true');
-//       Notiflix.Notify.failure('Please choose a date in the future');
-//     }
-//   },
-// };
