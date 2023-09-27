@@ -1,12 +1,11 @@
 import Notiflix from 'notiflix';
 
-// Seleccione el formulario y sus elementos
+import { delay } from 'lodash';
+
 const form = document.querySelector('.form');
 const delayInput = document.querySelector('input[name="delay"]');
 const stepInput = document.querySelector('input[name="step"]');
 const amountInput = document.querySelector('input[name="amount"]');
-
-// Resto del código...
 
 // Manejador de eventos para el formulario
 form.addEventListener('submit', function (e) {
@@ -48,11 +47,3 @@ function createPromise(position, delay) {
     }, delay);
   });
 }
-// function createPromise(position, delay) {
-//   const shouldResolve = Math.random() > 0.3;
-//   if (shouldResolve) {
-//     // Fulfill
-//   } else {
-//     // Reject
-//   }
-// }
